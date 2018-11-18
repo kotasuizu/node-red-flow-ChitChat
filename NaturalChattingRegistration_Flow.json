@@ -1,0 +1,50 @@
+[{
+  "id": "6ee3607d.14807",
+  "type": "tab",
+  "label": "appId取得",
+  "disabled": false,
+  "info": ""
+}, {
+  "id": "5b5946e2.7107d8",
+  "type": "NaturalChattingRegistration",
+  "z": "6ee3607d.14807",
+  "name": "",
+  "docomoapiconfig": "",
+  "botid": "Chatting",
+  "appkind": "Node-RED-Sample",
+  "x": 380,
+  "y": 160,
+  "wires": [
+    ["a9f1c5f2.21121"]
+  ]
+}, {
+  "id": "d61219b7.731848",
+  "type": "inject",
+  "z": "6ee3607d.14807",
+  "name": "",
+  "topic": "",
+  "payload": "",
+  "payloadType": "date",
+  "repeat": "",
+  "crontab": "",
+  "once": false,
+  "onceDelay": 0.1,
+  "x": 180,
+  "y": 160,
+  "wires": [
+    ["5b5946e2.7107d8"]
+  ]
+}, {
+  "id": "a9f1c5f2.21121",
+  "type": "debug",
+  "z": "6ee3607d.14807",
+  "name": "",
+  "active": true,
+  "tosidebar": true,
+  "console": false,
+  "tostatus": false,
+  "complete": "false",
+  "x": 590,
+  "y": 160,
+  "wires": []
+}]

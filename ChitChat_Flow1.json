@@ -1,0 +1,92 @@
+[{
+  "id": "62ac5b80.4d3e7c",
+  "type": "tab",
+  "label": "雑談ボット1",
+  "disabled": false,
+  "info": ""
+}, {
+  "id": "3a066386.cab75c",
+  "type": "Dialogue",
+  "z": "62ac5b80.4d3e7c",
+  "name": "",
+  "docomoapiconfig": "",
+  "x": 500,
+  "y": 220,
+  "wires": [
+    ["72d5add0.6c1ce4", "86fb969d.11be8"]
+  ]
+}, {
+  "id": "1e1c0697.31e7c1",
+  "type": "function",
+  "z": "62ac5b80.4d3e7c",
+  "name": "CreateDialogueSendMSG",
+  "func": "var appRecvTime = flow.get(\"serverSendTime\");\n\nvar payload =  {\n    \"appId\" : \"<appId>\",\n    \"voiceText\" : msg.payload,\n    \"appRecvTime\" : appRecvTime\n};\nmsg.payload = payload;\n\nreturn msg;",
+  "outputs": 1,
+  "noerr": 0,
+  "x": 290,
+  "y": 220,
+  "wires": [
+    ["20a408f2.33977", "3a066386.cab75c"]
+  ]
+}, {
+  "id": "72d5add0.6c1ce4",
+  "type": "debug",
+  "z": "62ac5b80.4d3e7c",
+  "name": "",
+  "active": true,
+  "tosidebar": true,
+  "console": false,
+  "tostatus": false,
+  "complete": "payload",
+  "x": 670,
+  "y": 180,
+  "wires": []
+}, {
+  "id": "20a408f2.33977",
+  "type": "debug",
+  "z": "62ac5b80.4d3e7c",
+  "name": "",
+  "active": true,
+  "tosidebar": true,
+  "console": false,
+  "tostatus": false,
+  "complete": "payload",
+  "x": 510,
+  "y": 260,
+  "wires": []
+}, {
+  "id": "86fb969d.11be8",
+  "type": "function",
+  "z": "62ac5b80.4d3e7c",
+  "name": "CreateSlackReplyMSG",
+  "func": "flow.set(\"serverSendTime\", msg.payload.serverSendTime);\n\nvar payload = msg.payload.systemText.expression\nmsg.payload = payload;\n\nreturn msg;",
+  "outputs": 1,
+  "noerr": 0,
+  "x": 700,
+  "y": 220,
+  "wires": [
+    ["df423ec9.2ff9f"]
+  ]
+}, {
+  "id": "df423ec9.2ff9f",
+  "type": "slack-out",
+  "z": "62ac5b80.4d3e7c",
+  "name": "",
+  "channel": "",
+  "controller": "",
+  "x": 810,
+  "y": 280,
+  "wires": []
+}, {
+  "id": "6077c44e.bab30c",
+  "type": "slack-in",
+  "z": "62ac5b80.4d3e7c",
+  "name": "",
+  "events": "direct_message",
+  "controller": "",
+  "x": 180,
+  "y": 160,
+  "wires": [
+    ["1e1c0697.31e7c1"]
+  ]
+}]
